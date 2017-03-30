@@ -5,7 +5,7 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <head>
-	<title>Person Page</title>
+	<title>AssignmentKredX</title>
 	<style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>
-	Add Strings(Comma Separated)
+	Add Strings
 </h1>
 <div ng-app="MyApp">
 	<div ng-controller="MyController">
@@ -53,13 +53,16 @@
 			
 			
 			$scope.add = function(elem) {
-				$scope.addQuery = "";
-				$scope.query.push(elem);
+				if(elem.length > 0) {
+					$scope.addQuery = "";
+					$scope.query.push(elem);
+				}
 			}
 			$scope.submit = function() {
 				$http.post('/SpringMVCHibernate/submitQuery',$scope.query).then(function(response){
 					//alert(response.data);
 					$scope.result = response.data;
+					$scope.query = [];
 				});
 			}
 			
