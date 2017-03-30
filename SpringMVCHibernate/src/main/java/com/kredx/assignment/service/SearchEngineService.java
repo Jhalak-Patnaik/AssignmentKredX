@@ -129,7 +129,7 @@ public class SearchEngineService {
 				
 				String words[] = str.split("[ !',.]");
 				for(int i=0;i<words.length;i++) {
-					if(words.length == 0)
+					if(words[i].length() == 0)
 						continue;
 					if(hashMap.containsKey(words[i].toLowerCase())) {
 						hashMap.get(words[i].toLowerCase()).add(docNumber);
@@ -145,9 +145,9 @@ public class SearchEngineService {
 				str = str.substring(12);
 				str = str.trim();
 				docs[docNumber-1] = new ReviewDoc(str, reviewSummaryTemp, score);
-				String words[] = str.split("[ !',.]");
+				String words[] = str.split("[^a-zA-Z]");
 				for(int i=0;i<words.length;i++) {
-					if(words.length == 0)
+					if(words[i].length() == 0)
 						continue;
 					if(hashMap.containsKey(words[i].toLowerCase())) {
 						hashMap.get(words[i].toLowerCase()).add(docNumber);
